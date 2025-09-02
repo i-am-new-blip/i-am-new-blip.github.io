@@ -1,19 +1,26 @@
-<!DOCTYPE html> <html lang="en"> <head>
-  <base href="https://i-am-new-blip.github.io/useddevices"> 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <base href="https://i-am-new-blip.github.io/useddevices/">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>UsedDevices || Sell or buy used devices</title>
   <link rel="stylesheet" href="style.css">
-  <script src="main.js"></script>
-  <script src="products.js"></script>
-</head><body>
-  <script src="status.js"></script>
+  <script src="main.js" defer></script>
+  <script src="products.js" defer></script>
+  <script src="status.js" defer></script>
+</head>
+<body>
   <header>
     <h1>UsedDevices</h1>
     <input type="text" placeholder="Search devices...">
   </header>
 
   <main>
-    <script> window.apis.addProduct("you are withholding info","right: wrong, wrong: right") </script>
+    <script>
+      // only runs after products.js loaded
+      window.apis.addProduct("you are withholding info","right: wrong, wrong: right");
+    </script>
   </main>
-</body> </html>
+</body>
+</html>
