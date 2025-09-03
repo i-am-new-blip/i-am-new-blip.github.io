@@ -1,40 +1,46 @@
-/* body + background */
 body {
-  background-color: #0d0d0d; /* full dark */
-  color: #e0e0e0;           /* light text for readability */
-  font-family: 'JetBrains Mono', monospace;
-  margin: 0;
-  padding: 0;
-}
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f6f6ef;
+    color: #1a1a1a;
+  }
 
-/* links */
-a {
-  color: #00ff00;         
-  text-decoration: none;  
-}
+  header {
+    background: #cc5200;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+  }
+  header h1 {
+    margin: 0;
+    font-size: 20px;
+    color: #dddddd;
+    flex: 1;
+  }
+  header input[type="text"] {
+    padding: 4px 8px;
+    font-size: 14px;
+    border: 1px solid #999999;
+    border-radius: 3px;
+  }
 
-/* headers */
-h1, h2 {
-  color: #00ff00;     
-  margin: 0;
-}
+  main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+  }
 
-.device-card {
-  background-color: #1a1a1a;
-  border: 1px solid #00ff00; 
-  padding: 10px 14px;        
-  margin-bottom: 12px;
-  border-radius: 4px;
-  display: inline-block;
-  width: 100%;
-  min-height: calc(1em * 1.2 + 20px); /* ensures at least 20px more than line height of biggest text */
-  box-sizing: border-box;
-}
-
-/* server status */
-.status {
-  font-weight: bold;
-  color: #ff3300;         
-  margin: 10px 0;
-  text-align: center;
-}
+  .device-card {
+    padding: 6px 0;
+    border-bottom: 1px solid #bbbbbb;
+  }
+  .device-card a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  .device-card p {
+    margin: 2px 0;
+    font-size: 14px;
+    color: #3a3a3a;
+  }
