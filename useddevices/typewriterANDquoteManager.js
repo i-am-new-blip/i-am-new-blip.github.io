@@ -1,31 +1,35 @@
 function write(d,v){
   d.textContent += v
 }
-function typeWrite(d,v,t){
-  let i = 0;
-
-  function typeWriter() {
-    write(d,v[i])
-    i++;
-    if (i <= v.length) {
-      setTimeout(typeWriter, t); // adjust speed here
+function typeWriteAsync(d,v,t){
+  return new Promise(resolve=>{
+    let i = 0;
+    function typeWriter() {
+      d.textContent += v[i];
+      i++;
+      if (i < v.length) setTimeout(typeWriter, t);
+      else resolve();
     }
+    typeWriter();
+  });
+}
+
+
+async function storeQuotes(){
+  if (!window.api.quotes) {
+    const text = await (await fetch("/quotes.txt")).text();
+    window.api.quotes = text.split(', anyways, ');
   }
-
-  typeWriter();
 }
 
-function storeQuotes(){
-  if (!window.api.quotes) window.api.quotes = await (await fetch("/quotes.txt")).text()
-}
-function loadQuotes(){
-  var loop = 1
+async function loadQuotes(){
+  if (!window.api.quotes) await storeQuotes();
   const quotes = window.api.quotes
-  while (loop !== 5 && !window.api.stopQuotes){
-
-    let quote = quotes[Math.floor(Math.random()*quotes.length)]
-    typeWrite(window.api.quoteManagerDiv, quote)
-
-    loop++
+  
+  for (let loop = 0; loop < 5 && !window.api.stopQuotes; loop++) {
+    const quote = quotes[Math.floor(Math.random() * quotes.length)];
+    await typeWriteAsync(window.api.quoteManagerDiv, quote, 50); // 50ms per char
+    // optional: add delay between quotes
+    await new Promise(r => setTimeout(r, 500));
   }
 }
