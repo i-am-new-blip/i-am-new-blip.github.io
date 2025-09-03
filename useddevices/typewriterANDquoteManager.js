@@ -1,3 +1,6 @@
+const quotes = ""
+window.api.quotes = quotes.split(', anyways, ')
+
 function write(d,v){
   d.textContent += v
 }
@@ -13,17 +16,7 @@ function typeWriteAsync(d,v,t){
     typeWriter();
   });
 }
-
-
-async function storeQuotes(){
-  if (!window.api.quotes) {
-    const text = await (await fetch("/quotes.txt")).text();
-    window.api.quotes = text.split(', anyways, ');
-  }
-}
-
-async function loadQuotes(){
-  if (!window.api.quotes) await storeQuotes();
+async function quotize(){
   const quotes = window.api.quotes
   
   for (let loop = 0; loop < 5 && !window.api.stopQuotes; loop++) {
